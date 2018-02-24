@@ -27,6 +27,31 @@ class User extends Component {
                     type: 'text',
                     placeholder: 'Enter your lastname'
                 }
+            },
+            message: {
+                element: 'textarea',
+                value: '',
+                label: true,
+                labelText: 'Message',
+                config: {
+                    name: 'message_input',
+                    rows: 4,
+                    cols: 36
+                }
+            },
+            age: {
+                element: 'select',
+                value: '',
+                label: true,
+                labelText: 'Age',
+                config: {
+                    name: 'age_input',
+                    options: [
+                        {val: '1', text: '10-20'},
+                        {val: '2', text: '20-30'},
+                        {val: '3', text: '+30'},                        
+                    ]
+                }
             }
         }
     }
@@ -48,6 +73,8 @@ class User extends Component {
         for(let key in this.state.formData) {
             dataToSubmit[key] = this.state.formData[key].value;
         }
+
+        console.log(dataToSubmit)
     }
 
 
