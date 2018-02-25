@@ -15,19 +15,30 @@ firebase.initializeApp(config);
 
 const firebaseDB = firebase.database();
 
-firebaseDB.ref().set({
-    firstname: "Stephen",
-    lastname: "Curry",
-    age: 29,
-    height: "1.91m",
-    number: 30,
-    position: "Point guard",
-    spouse: "Ayesha Curry",
-    team: {
-        founded: 1946,
-        name: "Golden State Warriors",
-        nickname: "Dubs"
-    },
-    parents: ["Sonya", "Dell"]
 
-});
+// Using promises to post data
+firebaseDB.ref('team/owner').set('Joseph S. Lacob')
+    .then(() => {
+        console.log('data saved')
+    })
+    .catch((e) => {
+        console.log(e);
+    });
+    
+
+// firebaseDB.ref().set({
+//     firstname: "Stephen",
+//     lastname: "Curry",
+//     age: 29,
+//     height: "1.91m",
+//     number: 30,
+//     position: "Point guard",
+//     spouse: "Ayesha Curry",
+//     team: {
+//         founded: 1946,
+//         name: "Golden State Warriors",
+//         nickname: "Dubs"
+//     },
+//     parents: ["Sonya", "Dell"]
+
+// });
