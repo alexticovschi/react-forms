@@ -17,14 +17,44 @@ const firebaseDB = firebase.database();
 
 
 // Using promises to post data
-firebaseDB.ref('team/owner').set('Joseph S. Lacob')
+// Update data example 2
+firebaseDB.ref().update({
+        'parents/0': 'Sonya Curry',
+        'parents/1': 'Dell Curry',
+        'team/head coach' : 'Steve Kerr'
+    })
     .then(() => {
-        console.log('data saved')
+        console.log('data updated')
     })
     .catch((e) => {
         console.log(e);
     });
-    
+
+
+
+// // Updating data example 1
+// firebaseDB.ref().update({
+//         friends: [
+//             'Kevin Durant',
+//             'Kris Wu'
+//         ]
+//     })
+//     .then(() => {
+//         console.log('data updated')
+//     })
+//     .catch((e) => {
+//         console.log(e);
+//     });
+
+// Removing/deleting data
+// firebaseDB.ref('team/joker').remove()
+//     .then(() => {
+//         console.log('data removed')
+//     })
+//     .catch((e) => {
+//         console.log(e);
+//     });
+
 
 // firebaseDB.ref().set({
 //     firstname: "Stephen",
