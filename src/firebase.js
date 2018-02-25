@@ -13,5 +13,21 @@ const config = {
 
 firebase.initializeApp(config);
 
-firebase.database().ref()
-.set('It works! Alive and chicken!');
+const firebaseDB = firebase.database();
+
+firebaseDB.ref().set({
+    firstname: "Stephen",
+    lastname: "Curry",
+    age: 29,
+    height: "1.91m",
+    number: 30,
+    position: "Point guard",
+    spouse: "Ayesha Curry",
+    team: {
+        founded: 1946,
+        name: "Golden State Warriors",
+        nickname: "Dubs"
+    },
+    parents: ["Sonya", "Dell"]
+
+});

@@ -74,8 +74,8 @@ const FormFields = (props) => {
     const showValidation = (data) => {
         let errorMessage = null;
 
-        console.log('data.validation',data.validation);
-        console.log('data.valid',data.valid);
+        //console.log('data.validation',data.validation);
+        //console.log('data.valid',data.valid);
         
         // id data.validation is true and is not valid, return an error message
         if(data.validation && !data.valid) {
