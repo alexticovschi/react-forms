@@ -15,60 +15,60 @@ firebase.initializeApp(config);
 
 const firebaseDB = firebase.database();
 
-
-// Using promises to post data
-// Update data example 2
-firebaseDB.ref().update({
-        'parents/0': 'Sonya Curry',
-        'parents/1': 'Dell Curry',
-        'team/head coach' : 'Steve Kerr'
-    })
-    .then(() => {
-        console.log('data updated')
-    })
-    .catch((e) => {
-        console.log(e);
-    });
+// Always listen for database changes
+// Listen for added child
+firebaseDB.ref().on('child_added', (snapshot) => {
+    console.log(snapshot.key, snapshot.val())
+});
 
 
 
-// // Updating data example 1
-// firebaseDB.ref().update({
-//         friends: [
-//             'Kevin Durant',
-//             'Kris Wu'
-//         ]
-//     })
-//     .then(() => {
-//         console.log('data updated')
-//     })
-//     .catch((e) => {
-//         console.log(e);
-//     });
-
-// Removing/deleting data
-// firebaseDB.ref('team/joker').remove()
-//     .then(() => {
-//         console.log('data removed')
-//     })
-//     .catch((e) => {
-//         console.log(e);
-//     });
-
-
-// firebaseDB.ref().set({
-//     firstname: "Stephen",
-//     lastname: "Curry",
-//     age: 29,
-//     height: "1.91m",
-//     number: 30,
-//     position: "Point guard",
-//     spouse: "Ayesha Curry",
-//     team: {
-//         founded: 1946,
-//         name: "Golden State Warriors",
-//         nickname: "Dubs"
-//     },
-//     parents: ["Sonya", "Dell"]
-
+// // Listen for changes
+// firebaseDB.ref().on('child_changed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val())
 // });
+
+
+// // Listen for removed elements  
+// firebaseDB.ref().on('child_removed', (snapshot) => {
+//     console.log(snapshot.key, snapshot.val())
+// });
+
+
+
+// // 1. Go to the database and get the (updated) data
+// firebaseDB.ref().on('value', (snapshot) => {
+//     console.log(snapshot.val())
+// });
+
+// // 2. Update the firstname. Change the name from 'Stephen' to 'Stevo'
+// setTimeout(() => {
+//     firebaseDB.ref().update({
+//         'firstname': 'Stevo'
+//     })
+//     console.log('Update complete!')
+// }, 3000)
+
+// // 3. Turn off the on listener/Don't listen for changes anymore
+// setTimeout(() => {
+//     firebaseDB.ref().off();
+//     console.log("Don't listen for changes anymore")
+// }, 6000)
+
+// // 4. Update the firstname again
+// setTimeout(() => {
+//     firebaseDB.ref('firstname').set('Stephen')
+//     console.log("Update complete! No data received")
+// }, 9000)
+
+
+
+
+// // Get data only once
+// firebaseDB.ref().once('value')
+//     .then((snapshot) => {
+//         console.log(snapshot.val())
+//     })
+//     .catch((e) => {
+//         console.log(e);
+//     });
