@@ -14,8 +14,10 @@ const config = {
 firebase.initializeApp(config);
 
 const firebaseDB = firebase.database();
+const googleAuth = new firebase.auth.GoogleAuthProvider();
 
-export { firebaseDB }
+
+export { firebase, firebaseDB, googleAuth }
 
 // firebaseDB.ref('users').orderByChild('lastname')
 //     .equalTo('Ball').once('value')
